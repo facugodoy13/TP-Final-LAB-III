@@ -1,4 +1,6 @@
-public class Paciente extends Usuario{
+import java.util.UUID;
+
+public class Paciente extends Usuario {
     /*fechas
 *Profesional
 *Atendido
@@ -6,7 +8,31 @@ public class Paciente extends Usuario{
 *HistorialMedico
 -VerAccionesDeHoy
 -CompletarAccionesDeHoy(y modificar)*/
-    private Profesional profesionalpropio;
-    private boolean atendido;
+    private Profesional profesionalPropio;
+    private boolean atendido = false;
+    private String enfermedad;
+    private PlanDeControl planDeControl;
+    /// HistorialMedico
+
+
+    public Paciente(String nombreCompleto, TipoUsuario tipoUsuario, String DNI, String contraseña,
+                    String telefono, String enfermedad, Profesional profesionalPropio, String edad) {
+        super(nombreCompleto, tipoUsuario, DNI, contraseña, telefono, edad);
+        this.profesionalPropio = profesionalPropio;
+        this.enfermedad = enfermedad;
+    }
+
+    public UUID getMatriculaMedico(){
+        return profesionalPropio.getMatricula();
+    }
+
+    public boolean isAtendido() {
+        return atendido;
+    }
+
+    public String getEnfermedad() {
+        return enfermedad;
+    }
+
 
 }
